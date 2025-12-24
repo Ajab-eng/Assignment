@@ -1,0 +1,208 @@
+Home Tasks : 
+
+// Task 1 :
+
+import java.util.Scanner;
+
+class Student {
+    int rollno;
+    String name, cls;
+
+    void getdata() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Roll No: ");
+        rollno = sc.nextInt();
+        sc.nextLine();
+        System.out.print("Name: ");
+        name = sc.nextLine();
+        System.out.print("Class: ");
+        cls = sc.nextLine();
+    }
+
+    void putdata() {
+        System.out.println("Roll No: " + rollno);
+        System.out.println("Name: " + name);
+        System.out.println("Class: " + cls);
+    }
+}
+
+class Test extends Student {
+    double T1, T2, T3, S1, S2, Assignment, Final;
+
+    void getmarks() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("T1 Marks: ");
+        T1 = sc.nextDouble();
+        System.out.print("T2 Marks: ");
+        T2 = sc.nextDouble();
+        System.out.print("T3 Marks: ");
+        T3 = sc.nextDouble();
+        System.out.print("Sessional 1: ");
+        S1 = sc.nextDouble();
+        System.out.print("Sessional 2: ");
+        S2 = sc.nextDouble();
+        System.out.print("Assignment: ");
+        Assignment = sc.nextDouble();
+    }
+
+    void Finalresult() {
+        Final = (T1 + T2 + T3 + S1 + S2 + Assignment) / 6;
+    }
+
+    void putmarks() {
+        System.out.println("Final Result: " + Final);
+    }
+
+    public static void main(String[] args) {
+        Test t = new Test();
+        t.getdata();
+        t.getmarks();
+        t.Finalresult();
+        t.putdata();
+        t.putmarks();
+    }
+}
+
+// Task 2 : 
+
+class Simple {
+    int num1, num2;
+
+    Simple(int a, int b) {
+        num1 = a;
+        num2 = b;
+    }
+
+    void add() { System.out.println("Add: " + (num1 + num2)); }
+    void sub() { System.out.println("Sub: " + (num1 - num2)); }
+    void mul() { System.out.println("Mul: " + (num1 * num2)); }
+    void div() { System.out.println("Div: " + (num1 / num2)); }
+}
+
+class Complex extends Simple {
+
+    Complex(int a, int b) {
+        super(a, b);
+    }
+
+    void add() {
+        if (num1 > 0 && num2 > 0) super.add();
+        else System.out.println("Error: Values must be > 0");
+    }
+
+    void sub() {
+        if (num1 > 0 && num2 > 0) super.sub();
+        else System.out.println("Error");
+    }
+
+    void mul() {
+        if (num1 > 0 && num2 > 0) super.mul();
+        else System.out.println("Error");
+    }
+
+    void div() {
+        if (num1 > 0 && num2 > 0) super.div();
+        else System.out.println("Error");
+    }
+
+    public static void main(String[] args) {
+        Complex c = new Complex(10, 5);
+        c.add();
+        c.sub();
+        c.mul();
+        c.div();
+    }
+}
+
+// Task 3 : 
+
+class Electricity {
+    double units;
+
+    Electricity(double u) {
+        units = u;
+    }
+
+    double Bill() {
+        if (units <= 100)
+            return units * 0.50;
+        else
+            return (100 * 0.50) + ((units - 100) * 0.60);
+    }
+}
+
+class More_Electricity extends Electricity {
+
+    More_Electricity(double u) {
+        super(u);
+    }
+
+    double Bill() {
+        double cost = super.Bill();
+        if (cost > 250)
+            cost += (cost - 250) * 0.15;
+        return cost;
+    }
+
+    public static void main(String[] args) {
+        More_Electricity e = new More_Electricity(600);
+        System.out.println("Total Bill: Rs " + e.Bill());
+    }
+}
+
+
+// Task 4 : 
+
+class Package {
+    String sender, receiver;
+    double weight, costPerOunce;
+
+    Package(String s, String r, double w, double c) {
+        sender = s;
+        receiver = r;
+        weight = (w > 0) ? w : 0;
+        costPerOunce = (c > 0) ? c : 0;
+    }
+
+    double calculateCost() {
+        return weight * costPerOunce;
+    }
+}
+
+class TwoDayPackage extends Package {
+    double flatFee;
+
+    TwoDayPackage(String s, String r, double w, double c, double f) {
+        super(s, r, w, c);
+        flatFee = f;
+    }
+
+    double calculateCost() {
+        return super.calculateCost() + flatFee;
+    }
+}
+
+class OvernightPackage extends Package {
+    double extraFee;
+
+    OvernightPackage(String s, String r, double w, double c, double e) {
+        super(s, r, w, c);
+        extraFee = e;
+    }
+
+    double calculateCost() {
+        return weight * (costPerOunce + extraFee);
+    }
+}
+
+class TestPackage {
+    public static void main(String[] args) {
+        Package p = new Package("Ali", "Ahmed", 10, 2);
+        TwoDayPackage t = new TwoDayPackage("Ali", "Sara", 10, 2, 5);
+        OvernightPackage o = new OvernightPackage("Ali", "Usman", 10, 2, 1);
+
+        System.out.println("Normal Package: " + p.calculateCost());
+        System.out.println("Two Day Package: " + t.calculateCost());
+        System.out.println("Overnight Package: " + o.calculateCost());
+    }
+}
