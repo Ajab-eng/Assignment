@@ -1,0 +1,53 @@
+Diagrams :
+
+1 : 
+
+-------------------------
+|      Rectangle       |
+-------------------------
+| - width: double      |
+| - height: double     |
+-------------------------
+| + Rectangle()        |
+| + Rectangle(w,h)     |
+| + getArea(): double  |
+| + getPerimeter():double |
+-------------------------
+
+
+2 :
+
+-------------------------
+|        Stock          |
+-------------------------
+| - symbol: String     |
+| - name: String       |
+| - previousClosingPrice: double |
+| - currentPrice: double |
+-------------------------
+| + Stock(symbol,name) |
+| + getChangePercent():double |
+-------------------------
+
+
+5 : 
+
+------------------------------
+|           Account          |
+------------------------------
+| - id: int                 |
+| - balance: double         |
+| - annualInterestRate: double |
+| - dateCreated: Date       |
+------------------------------
+| + Account()               |
+| + Account(id,balance)     |
+| + getId() / setId()       |
+| + getBalance()/setBalance() |
+| + getAnnualInterestRate()/setAnnualInterestRate() |
+| + getDateCreated()        |
+| + getMonthlyInterestRate():double |
+| + getMonthlyInterest():double |
+| + withdraw(amount)        |
+| + deposit(amount)         |
+------------------------------
