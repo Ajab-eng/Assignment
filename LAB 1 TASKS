@@ -1,0 +1,136 @@
+Lab 1 Tasks :
+
+// TASK 1 :
+
+class CounterClass {
+    CounterClass() {
+        System.out.println("I am object no. __");
+    }
+
+    public static void main(String[] args) {
+        CounterClass obj1 = new CounterClass();
+        CounterClass obj2 = new CounterClass();
+        CounterClass obj3 = new CounterClass();
+    }
+}
+
+
+// TASK 2 :
+
+class CounterClassCount {
+    static int count = 0;
+
+    CounterClassCount() {
+        count++;
+        System.out.println("I am object no. " + count);
+    }
+
+    public static void main(String[] args) {
+        CounterClassCount obj1 = new CounterClassCount();
+        CounterClassCount obj2 = new CounterClassCount();
+        CounterClassCount obj3 = new CounterClassCount();
+    }
+}
+
+// TASK 3 :
+
+class Int {
+    private int value;
+
+    // Initialize to zero
+    Int() {
+        value = 0;
+    }
+
+    // Initialize to an integer value
+    Int(int v) {
+        value = v;
+    }
+
+    // Display value
+    void display() {
+        System.out.println("Value: " + value);
+    }
+
+    public static void main(String[] args) {
+        Int num1 = new Int();
+        Int num2 = new Int(25);
+
+        num1.display();
+        num2.display();
+    }
+}
+
+// TASK 4 :
+
+import java.util.Scanner;
+
+class Time {
+    int hours, minutes, seconds;
+
+    void readTime() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter hours: ");
+        hours = sc.nextInt();
+        System.out.print("Enter minutes: ");
+        minutes = sc.nextInt();
+        System.out.print("Enter seconds: ");
+        seconds = sc.nextInt();
+    }
+
+    void display24Hour() {
+        System.out.printf("24-Hour Format: %02d:%02d:%02d\n",
+                hours, minutes, seconds);
+    }
+
+    void display12Hour() {
+        int h = hours % 12;
+        if (h == 0) h = 12;
+        String period = (hours >= 12) ? "PM" : "AM";
+
+        System.out.printf("12-Hour Format: %02d:%02d:%02d %s\n",
+                h, minutes, seconds, period);
+    }
+
+    public static void main(String[] args) {
+        Time t = new Time();
+        t.readTime();
+        t.display24Hour();
+        t.display12Hour();
+    }
+}
+
+
+// TASK 5  : 
+
+import java.util.Scanner;
+
+class Marks {
+    int m1, m2, m3;
+
+    void set_marks() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter first mark: ");
+        m1 = sc.nextInt();
+        System.out.print("Enter second mark: ");
+        m2 = sc.nextInt();
+        System.out.print("Enter third mark: ");
+        m3 = sc.nextInt();
+    }
+
+    int sum() {
+        return m1 + m2 + m3;
+    }
+
+    double avg() {
+        return sum() / 3.0;
+    }
+
+    public static void main(String[] args) {
+        Marks obj = new Marks();
+        obj.set_marks();
+        System.out.println("Sum = " + obj.sum());
+        System.out.println("Average = " + obj.avg());
+    }
+}
+
