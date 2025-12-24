@@ -1,0 +1,228 @@
+Tasks : 
+
+// Task 1 : 
+
+class Address {
+    private String street, house, city, code;
+
+    public void setStreet(String s) { street = s; }
+    public void setHouse(String h) { house = h; }
+    public void setCity(String c) { city = c; }
+    public void setCode(String c) { code = c; }
+
+    public String getStreet() { return street; }
+    public String getHouse() { return house; }
+    public String getCity() { return city; }
+    public String getCode() { return code; }
+}
+
+class Person {
+    Address address = new Address();
+
+    public static void main(String[] args) {
+        Person p = new Person();
+
+        p.address.setStreet("Main Road");
+        p.address.setHouse("10B");
+        p.address.setCity("Lahore");
+        p.address.setCode("54000");
+
+        System.out.println(p.address.getStreet());
+        System.out.println(p.address.getHouse());
+        System.out.println(p.address.getCity());
+        System.out.println(p.address.getCode());
+    }
+}
+
+
+// Task 2 : 
+
+class Date {
+    int day, month, year;
+
+    Date(int d, int m, int y) {
+        day = d;
+        month = m;
+        year = y;
+    }
+}
+
+class Employee {
+    Date dob, doj;
+
+    Employee(Date d1, Date d2) {
+        dob = d1;
+        doj = d2;
+    }
+
+    void joinedLastFiveYears() {
+        System.out.println((2012 - doj.year <= 5)
+                ? "Joined within last 5 years"
+                : "Not joined within last 5 years");
+    }
+
+    void ageLessThan40() {
+        System.out.println((2012 - dob.year < 40)
+                ? "Age less than 40"
+                : "Age 40 or more");
+    }
+
+    public static void main(String[] args) {
+        Employee e = new Employee(
+                new Date(10, 5, 1980),
+                new Date(15, 3, 2009));
+
+        e.joinedLastFiveYears();
+        e.ageLessThan40();
+    }
+}
+
+// TASK 3 : 
+
+import java.util.Scanner;
+
+class Publication {
+    String title;
+    double price;
+
+    void getdata() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Title: ");
+        title = sc.nextLine();
+        System.out.print("Price: ");
+        price = sc.nextDouble();
+    }
+
+    void putdata() {
+        System.out.println(title + " - " + price);
+    }
+}
+
+class Book extends Publication {
+    int pages;
+
+    void getdata() {
+        super.getdata();
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Pages: ");
+        pages = sc.nextInt();
+    }
+
+    void putdata() {
+        super.putdata();
+        System.out.println("Pages: " + pages);
+    }
+}
+
+class Tape extends Publication {
+    int time;
+
+    void getdata() {
+        super.getdata();
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Play Time: ");
+        time = sc.nextInt();
+    }
+
+    void putdata() {
+        super.putdata();
+        System.out.println("Play Time: " + time);
+    }
+}
+
+class TestPublication {
+    public static void main(String[] args) {
+        Book b = new Book();
+        Tape t = new Tape();
+
+        b.getdata();
+        t.getdata();
+
+        b.putdata();
+        t.putdata();
+    }
+}
+
+// Task 4 : 
+
+class Person {
+    int id;
+    String name, address;
+
+    Person(int i, String n, String a) {
+        id = i;
+        name = n;
+        address = a;
+    }
+
+    void display() {
+        System.out.println(id + " " + name + " " + address);
+    }
+}
+
+class Student extends Person {
+    int rollNo;
+    double marks;
+
+    Student(int i, String n, String a, int r, double m) {
+        super(i, n, a);
+        rollNo = r;
+        marks = m;
+    }
+
+    void display() {
+        super.display();
+        System.out.println(rollNo + " " + marks);
+    }
+
+    public static void main(String[] args) {
+        Student s = new Student(1, "Ali", "Karachi", 101, 90);
+        s.display();
+    }
+}
+
+// TASK 5 :
+
+class Computer {
+    int wordSize, memorySize, storageSize, speed;
+
+    Computer() {}
+
+    Computer(int w, int m, int s, int sp) {
+        wordSize = w;
+        memorySize = m;
+        storageSize = s;
+        speed = sp;
+    }
+
+    void display() {
+        System.out.println(wordSize + " " + memorySize + " " +
+                storageSize + " " + speed);
+    }
+}
+
+class Laptop extends Computer {
+    double length, width, height, weight;
+
+    Laptop(int w, int m, int s, int sp,
+           double l, double wi, double h, double we) {
+        super(w, m, s, sp);
+        length = l;
+        width = wi;
+        height = h;
+        weight = we;
+    }
+
+    void display() {
+        super.display();
+        System.out.println(length + " " + width + " " +
+                height + " " + weight);
+    }
+
+    public static void main(String[] args) {
+        Laptop l = new Laptop(64, 8192, 512000, 2400,
+                35, 24, 2, 2.5);
+        l.display();
+    }
+}
+
